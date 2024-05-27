@@ -4,7 +4,8 @@
   "description": "Terminal Emulator UI with React + Tailwind",
   "main": "src/index.tsx",
   "files": [
-    "src/index.tsx"
+    "src/index.tsx",
+    "src/components"
   ],
   "repository": {
     "type": "git",
