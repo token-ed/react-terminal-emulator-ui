@@ -4,7 +4,8 @@
 
 A customizable terminal component for React applications. This component simulates a command-line interface where users can input commands and view the output. Built with React + TypeScript + Tailwind
 
-![gif](https://github.com/token-ed/react-terminal-emulator-ui/assets/149210610/7d05f95d-090d-4b69-a43a-a58410e4c6bc)
+![demo-gif](https://github.com/token-ed/react-terminal-emulator-ui/assets/149210610/88dc4b11-062f-48d9-8a1f-116b5c93d2ef)
+
 
 ### Live example
 
