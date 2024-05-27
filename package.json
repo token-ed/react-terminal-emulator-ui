@@ -1,6 +1,6 @@
 {
   "name": "react-terminal-emulator-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Terminal Emulator UI with React + Tailwind",
   "main": "src/index.tsx",
   "files": [
