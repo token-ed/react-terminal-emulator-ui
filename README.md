@@ -43,13 +43,14 @@ export default MyTerminal;
 
 ### API
 
-| Name                | Type                      | Default                                                            | Description                                                                                                               |
-| ------------------- | ------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `commands`          | `Array<Command>`          | -                                                                  | An array of command objects defining the available commands and their corresponding results or side effects.              |
-| `userName`          | `string`                  | -                                                                  | The username to be displayed in the terminal prompt.                                                                      |
-| `machineName`       | `string`                  | -                                                                  | The machine name to be displayed in the terminal prompt.                                                                  |
-| `initialFeed`       | `string`                  | `"Welcome to your terminal. Type help to see available commands."` | Initial text to be displayed in the terminal.                                                                             |
-| `onCommandNotFound` | `(cmd: string) => string` | A function returning `'${cmd}': command not found.`                | A function called when an unknown command is entered. It should return the error message to be displayed in the terminal. |
+| Name                  | Type                      | Default                                                            | Description                                                                                                               |
+| --------------------- | ------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `commands`            | `Array<Command>`          | -                                                                  | An array of command objects defining the available commands and their corresponding results or side effects.              |
+| `userName`            | `string`                  | -                                                                  | The username to be displayed in the terminal prompt.                                                                      |
+| `machineName`         | `string`                  | -                                                                  | The machine name to be displayed in the terminal prompt.                                                                  |
+| `initialFeed`         | `string`                  | `"Welcome to your terminal. Type help to see available commands."` | Initial text to be displayed in the terminal.                                                                             |
+| `onCommandNotFound`   | `(cmd: string) => string` | A function returning `'${cmd}': command not found.`                | A function called when an unknown command is entered. It should return the error message to be displayed in the terminal. |
+| `disableClearCommand` | `boolean`                 | `false`                                                            | Boolean flag to disable native `clear` command (clears the terminal)                                                      |
 
 ### License
 

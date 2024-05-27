@@ -13,6 +13,7 @@ interface Props {
   machineName: string;
   initialFeed?: string;
   onCommandNotFound?: (cmd: string) => string;
+  disableClearCommand?: boolean;
 }
 
 const ignoredKeys = [
@@ -76,7 +77,11 @@ export const Terminal = ({
   userName,
   initialFeed,
   onCommandNotFound = (cmd: string) => `'${cmd}': command  not found.`,
+  disableClearCommand,
 }: Props) => {
+  const allCommands: Array<Command> = disableClearCommand
+    ? commands
+    : [...commands, { command: "clear" }];
   const [output, setOutput] = useState<Array<React.ReactNode | undefined>>([]);
   const [focused, setFocused] = useState(true);
   const [currentLine, setCurrentLine] = useState<string>("");
@@ -98,11 +103,12 @@ export const Terminal = ({
 
   const processCommand = (cmd: string) => {
     const newOutput = [...output, `${userName}@${machineName}:~$ ${cmd}`];
-    const foundCommand = commands.find((command) => command.command === cmd);
+    const foundCommand = allCommands.find((command) => command.command === cmd);
 
     if (!foundCommand) {
       newOutput.push(onCommandNotFound(cmd));
     } else {
+      if (!disableClearCommand && foundCommand.command === "clear") return setOutput([]);
       if (foundCommand.result) newOutput.push(foundCommand.result);
       if (foundCommand.sideEffect) foundCommand.sideEffect();
     }
@@ -111,6 +117,8 @@ export const Terminal = ({
 
     if (inputRef.current) inputRef.current.scrollIntoView();
   };
+
+  console.log(output);
 
   useEffect(() => {
     if (inputRef.current) {

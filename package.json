@@ -6,6 +6,10 @@
   "files": [
     "src/index.tsx"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/token-ed/react-terminal-emulator-ui"
+  },
   "scripts": {
     "tw:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css",
     "tw:watch": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css --watch",
@@ -27,8 +31,7 @@
   "author": "Eduardo Fernandes",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.2",
-    "tailwind-merge": "^2.1.0"
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.24.6",

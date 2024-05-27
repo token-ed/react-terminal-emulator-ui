@@ -14,14 +14,38 @@ const commands: Array<Command> = [
   {
     command: "help",
     result: (
-      <>
-        <b>ewgewg</b>
-        <div className="bg-slate-500 ">ewgweg</div>
-        <button>wege</button>
-      </>
+      <div>
+        <p>Available commands:</p>
+        <ul>
+          <li>
+            <b>help</b> - List of available commands
+          </li>
+          <li>
+            <b>bio</b> - Display bio details about the user
+          </li>
+        </ul>
+      </div>
     ),
-    sideEffect: () => alert("wow"),
+  },
+  {
+    command: "bio",
+    result: (
+      <div>
+        <p>
+          👋 Hello! I'm user-name, a passionate developer with a love for coding and technology.
+        </p>
+        <ul>
+          <li>💻 Full-Stack Developer</li>
+          <li>📚 Avid Learner</li>
+          <li>🎨 Creative Problem Solver</li>
+          <li>🌐 Open Source Contributor</li>
+        </ul>
+        <p>Let's build something amazing together!</p>
+      </div>
+    ),
   },
 ];
 
-const AppDesktop = () => <Terminal commands={commands} machineName="randomMachine" userName="Ed" />;
+const AppDesktop = () => (
+  <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+);
