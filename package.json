@@ -12,9 +12,10 @@
   },
   "scripts": {
     "tw:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css",
+    "tw:docs:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./docs/output.css",
     "tw:watch": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css --watch",
     "start": "concurrently \"npm run tw:watch\" \"webpack-dev-server --mode development\"",
-    "build": "npm run tw:build &&  rimraf docs && webpack --color --mode production",
+    "build": "rimraf docs && npm run tw:build && npm run tw:docs:build && webpack --color --mode production",
     "build-dev": "rimraf docs && webpack --color --mode development"
   },
   "keywords": [
