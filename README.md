@@ -103,3 +103,4 @@ For any issues or questions, please open an issue on GitHub.
 - Enable arrow navigation
 - Styling wrapper classes with Tailwind
 - Resizing/Size props
+- Support Tailwind dark/light modes out of the box
