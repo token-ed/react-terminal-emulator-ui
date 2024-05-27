@@ -11,7 +11,7 @@ A customizable terminal component for React applications. This component simulat
 You can install the package from npm using the following command:
 
 ```bash
-npm install terminal
+npm i react-terminal-emulator-ui
 ```
 
 ### Usage
@@ -22,20 +22,48 @@ import { Terminal, Command } from "terminal";
 
 const MyTerminal = () => {
   // Define commands
-  const commands: Command[] = [
+  const commands: Array<Command> = [
     {
       command: "help",
-      result: "List of available commands: ...",
+      result: (
+        <div>
+          <p>Available commands:</p>
+          <ul>
+            <li>
+              <b>help</b> - List of available commands
+            </li>
+            <li>
+              <b>bio</b> - Display bio details about the user
+            </li>
+          </ul>
+        </div>
+      ),
     },
-    // Add more commands as needed
+    {
+      command: "bio",
+      result: (
+        <div>
+          <p>
+            👋 Hello! I'm user-name, a passionate developer with a love for coding and technology.
+          </p>
+          <ul>
+            <li>💻 Full-Stack Developer</li>
+            <li>📚 Avid Learner</li>
+            <li>🎨 Creative Problem Solver</li>
+            <li>🌐 Open Source Contributor</li>
+          </ul>
+          <p>Let's build something amazing together!</p>
+        </div>
+      ),
+    },
   ];
 
   return (
     <Terminal
       commands={commands}
-      userName="user"
-      machineName="machine"
-      initialFeed="Welcome to the terminal!"
+      userName="user-name"
+      machineName="machine-name"
+      initialFeed="Welcome to your terminal. Type help to see available commands."
     />
   );
 };
