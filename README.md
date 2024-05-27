@@ -2,9 +2,13 @@
 
 ### Description
 
-A customizable terminal component for React applications. This component simulates a command-line interface where users can input commands and view the output.
+A customizable terminal component for React applications. This component simulates a command-line interface where users can input commands and view the output. Built with React + TypeScript + Tailwind
 
 ![gif](https://github.com/token-ed/react-terminal-emulator-ui/assets/149210610/7d05f95d-090d-4b69-a43a-a58410e4c6bc)
+
+### Live example
+
+- [React Terminal Emulator UI](https://token-ed.github.io/react-terminal-emulator-ui/)
 
 ### Installation
 
@@ -88,8 +92,14 @@ This package is licensed under the MIT License.
 
 ### Author
 
-Eduardo Fernandes
+- [Eduardo Fernandes](https://github.com/token-ed)
 
 ### Support
 
 For any issues or questions, please open an issue on GitHub.
+
+#### Upcoming features
+
+- Enable arrow navigation
+- Styling wrapper classes with Tailwind
+- Resizing/Size props
