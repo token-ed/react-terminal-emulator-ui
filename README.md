@@ -4,6 +4,8 @@
 
 A customizable terminal component for React applications. This component simulates a command-line interface where users can input commands and view the output.
 
+![gif](https://github.com/token-ed/react-terminal-emulator-ui/assets/149210610/7d05f95d-090d-4b69-a43a-a58410e4c6bc)
+
 ### Installation
 
 You can install the package from npm using the following command:
