@@ -149,18 +149,18 @@ export const Terminal = ({
 
   return (
     <div
-      className="flex flex-col text-black dark:text-white bg-white dark:bg-[#300924] rounded-md w-full h-dvh font-mono relative"
+      className="flex flex-col text-black dark:text-white bg-[#afafaf96] dark:bg-[#300924] rounded-md w-full h-dvh font-mono relative"
       onFocus={handleFocusInput}
       onBlur={handleBlur}
       tabIndex={1}>
-      <div className="flex p-2 bg-gray-700 rounded-tl-md rounded-tr-md h-10 items-center relative">
+      <div className="flex p-2 dark:bg-gray-700 bg-slate-600 rounded-tl-md rounded-tr-md h-10 items-center relative">
         <div className="flex space-x-2 items-center">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
 
-        <div className="text-center w-full font-bold text-slate-400">
+        <div className="text-center w-full font-bold text-slate-400 dark:text-white">
           [{userName}@{machineName}]$
         </div>
       </div>
@@ -171,7 +171,7 @@ export const Terminal = ({
             const parts = line.split(":");
             return (
               <div className="flex" key={index}>
-                <span className="text-green-500">{parts[0]}: </span>
+                <span className="dark:text-green-500 text-green-900">{parts[0]}: </span>
                 <span>{parts[1]}</span>
               </div>
             );
@@ -180,10 +180,10 @@ export const Terminal = ({
           return <div key={index}>{line}</div>;
         })}
         <div className="flex relative">
-          <span className="text-green-500">
+          <span className="dark:text-green-500 text-green-900">
             {userName}@{machineName}
           </span>
-          :<span className="text-blue-500">~</span>$&nbsp;
+          :<span>~</span>$&nbsp;
           <div className="flex-grow relative">
             <span id="hiddenSpan" className="invisible -mt-1 absolute" ref={hiddenSpanRef} />
             <input
@@ -198,7 +198,7 @@ export const Terminal = ({
               {focused ? (
                 <div
                   ref={caretRef}
-                  className="absolute top-0 h-full bg-white w-[10px] animate-caret-blink"
+                  className="absolute top-0 h-full bg-slate-800 dark:bg-white w-[10px] animate-caret-blink"
                 />
               ) : null}
             </div>
