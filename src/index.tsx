@@ -132,6 +132,7 @@ export const Terminal = ({
       const { selectionStart } = inputRef.current;
       const textBeforeCaret = currentLine.slice(0, selectionStart || 0);
       hiddenSpanRef.current.textContent = textBeforeCaret;
+      console.log(hiddenSpanRef.current.offsetWidth);
       caretRef.current.style.left = `${hiddenSpanRef.current.offsetWidth}px`; // Adjust to fit input width
     }
   }, [currentLine]);
@@ -149,22 +150,21 @@ export const Terminal = ({
 
   return (
     <div
-      className="flex flex-col text-black dark:text-white bg-[#afafaf96] dark:bg-[#300924] rounded-md w-full h-dvh font-mono relative"
+      className="flex flex-col text-black dark:text-white bg-[#afafaf96] dark:bg-[#300924] rounded-md w-full h-full font-mono"
       onFocus={handleFocusInput}
       onBlur={handleBlur}
       tabIndex={1}>
-      <div className="flex p-2 dark:bg-gray-700 bg-slate-600 rounded-tl-md rounded-tr-md h-10 items-center relative">
+      <div className="flex p-2 dark:bg-gray-700 bg-slate-600 rounded-tl-md rounded-tr-md h-10 items-center">
         <div className="flex space-x-2 items-center">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-
         <div className="text-center w-full font-bold text-slate-400 dark:text-white">
           [{userName}@{machineName}]$
         </div>
       </div>
-      <div className="h-full overflow-y-auto pt-4 px-2">
+      <div className="overflow-y-auto pt-4 px-2">
         <InitialFeed text={initialFeed} />
         {output.map((line, index) => {
           if (index % 2 === 0 && typeof line === "string") {
@@ -185,13 +185,12 @@ export const Terminal = ({
           </span>
           :<span>~</span>$&nbsp;
           <div className="flex-grow relative">
-            <span id="hiddenSpan" className="invisible -mt-1 absolute" ref={hiddenSpanRef} />
+            <span id="hiddenSpan" className="invisible fixed" ref={hiddenSpanRef} />
             <input
               ref={inputRef}
-              className="fixed -z-10] w-0 h-0 opacity-0"
+              className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
               onKeyDown={handleCommand}
-              onChange={() => {}}
             />
             <div className="flex">
               <span>{currentLine}</span>

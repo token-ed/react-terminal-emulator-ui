@@ -1,6 +1,6 @@
 {
   "name": "react-terminal-emulator-ui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Terminal Emulator UI with React + Tailwind",
   "main": "src/index.tsx",
   "files": [
@@ -32,10 +32,9 @@
   ],
   "author": "Eduardo Fernandes",
   "license": "ISC",
-  "dependencies": {
-    "concurrently": "^8.2.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "@babel/plugin-transform-runtime": "^7.24.6",
     "@babel/preset-env": "^7.24.6",
     "@babel/preset-react": "^7.24.6",

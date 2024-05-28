@@ -107,6 +107,27 @@ For more information refer to: https://tailwindcss.com/docs/content-configuratio
 | `onCommandNotFound`   | `(cmd: string) => string` | A function returning `'${cmd}': command not found.`                | A function called when an unknown command is entered. It should return the error message to be displayed in the terminal. |
 | `disableClearCommand` | `boolean`                 | `false`                                                            | Boolean flag to disable native `clear` command (clears the terminal)                                                      |
 
+### `Note on Height`
+
+The main element of the terminal component uses the `h-full` TailwindCSS class. This means that if you want to restrict the height of the terminal, you need to wrap the component in a `<div>` or any other element and apply a custom height. For example, to use the full page height, you can use the h-screen class, or for a custom height, you can use something like `h-96`.
+
+#### Example with `h-screen`:
+
+```jsx
+<div className="h-screen">
+  <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+</div>
+```
+
+#### Example with `h-96`:
+
+```jsx
+// your parent element with `h-96`
+<div className="h-96">
+  <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+</div>
+```
+
 ### License
 
 This package is licensed under the MIT License.

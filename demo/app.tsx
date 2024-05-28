@@ -47,5 +47,7 @@ const commands: Array<Command> = [
 ];
 
 const AppDesktop = () => (
-  <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+  <div className="h-screen">
+    <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+  </div>
 );
