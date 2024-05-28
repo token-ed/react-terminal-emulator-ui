@@ -71,6 +71,33 @@ const ignoredKeys = [
   "ContextMenu",
 ];
 
+const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
+  if (index % 2 === 0 && typeof line === "string") {
+    const parts = line.split(" ");
+    console.log(parts);
+    const prompt = parts[0];
+    const command = parts[1];
+
+    const promptParts = prompt.split("@");
+    const userName = promptParts[0];
+    const machineName = promptParts[1];
+
+    const machineNameOnly = machineName.slice(0, -3);
+    return (
+      <div className="flex" key={index}>
+        <span className="text-green-500/80 font-bold">{userName}</span>
+        <span className="text-gray-300">@</span>
+        <span className="text-blue-500/80 font-bold">{machineNameOnly}</span>:
+        <span className="text-yellow-500/80 font-bold">~</span>
+        <span className="text-red-500/80 font-bold">$</span>&nbsp;
+        <span>{command}</span>
+      </div>
+    );
+  }
+
+  return <div key={index}>{line}</div>;
+};
+
 export const Terminal = ({
   commands,
   machineName,
@@ -157,30 +184,21 @@ export const Terminal = ({
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-center w-full font-bold text-slate-400 dark:text-white">
+        <div className="text-center w-full font-bold text-slate-400 dark:text-gray-300 -ml-9">
           [{userName}@{machineName}]$
         </div>
       </div>
       <div className="overflow-y-auto pt-4 px-2">
         <InitialFeed text={initialFeed} />
-        {output.map((line, index) => {
-          if (index % 2 === 0 && typeof line === "string") {
-            const parts = line.split(":");
-            return (
-              <div className="flex" key={index}>
-                <span className="dark:text-green-500 text-green-900">{parts[0]}: </span>
-                <span>{parts[1]}</span>
-              </div>
-            );
-          }
-
-          return <div key={index}>{line}</div>;
-        })}
+        {output.map(getPrompt)}
         <div className="flex relative">
-          <span className="dark:text-green-500 text-green-900">
-            {userName}@{machineName}
+          <span>
+            <span className="text-green-500/80 font-bold">{userName}</span>
+            <span className="text-gray-300 font-bold">@</span>
+            <span className="text-blue-500/80 font-bold">{machineName}</span>
           </span>
-          :<span>~</span>$&nbsp;
+          :<span className="text-yellow-500/80 font-bold">~</span>
+          <span className="text-red-500/80 font-bold">$</span>&nbsp;
           <div className="flex-grow relative">
             <span id="hiddenSpan" className="invisible fixed" ref={hiddenSpanRef} />
             <input

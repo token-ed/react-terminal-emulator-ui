@@ -143,6 +143,5 @@ For any issues or questions, please open an issue on GitHub.
 #### Upcoming features
 
 - Enable arrow navigation
-- Styling wrapper classes with Tailwind
+- Styling wrapper classes with Tailwind + Styling for the rest of the bits (prompt parts - user name, machine name etc, tilde etc)
 - Resizing/Size props
-- Support Tailwind dark/light modes out of the box
