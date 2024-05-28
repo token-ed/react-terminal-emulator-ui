@@ -85,11 +85,11 @@ const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
     const machineNameOnly = machineName.slice(0, -3);
     return (
       <div className="flex" key={index}>
-        <span className="text-green-500/80 font-bold">{userName}</span>
-        <span className="text-gray-300">@</span>
-        <span className="text-blue-500/80 font-bold">{machineNameOnly}</span>:
-        <span className="text-yellow-500/80 font-bold">~</span>
-        <span className="text-red-500/80 font-bold">$</span>&nbsp;
+        <span className="dark:text-green-500/80 text-green-800 font-bold">{userName}</span>
+        <span className="dark:text-gray-300 text-gray-700">@</span>
+        <span className="dark:text-blue-500/80 text-blue-800 font-bold">{machineNameOnly}</span>:
+        <span className="dark:text-yellow-500/80 text-orange-800 font-bold">~</span>
+        <span className="dark:text-red-500/80 text-red-800 font-bold">$</span>&nbsp;
         <span>{command}</span>
       </div>
     );
@@ -193,12 +193,12 @@ export const Terminal = ({
         {output.map(getPrompt)}
         <div className="flex relative">
           <span>
-            <span className="text-green-500/80 font-bold">{userName}</span>
-            <span className="text-gray-300 font-bold">@</span>
-            <span className="text-blue-500/80 font-bold">{machineName}</span>
+            <span className="dark:text-green-500/80 text-green-800 font-bold">{userName}</span>
+            <span className="dark:text-gray-300 text-gray-700 font-bold">@</span>
+            <span className="dark:text-blue-500/80 text-blue-800 font-bold">{machineName}</span>
           </span>
-          :<span className="text-yellow-500/80 font-bold">~</span>
-          <span className="text-red-500/80 font-bold">$</span>&nbsp;
+          :<span className="dark:text-yellow-500/80 text-orange-800 font-bold">~</span>
+          <span className="dark:text-red-500/80 text-red-800 font-bold">$</span>&nbsp;
           <div className="flex-grow relative">
             <span id="hiddenSpan" className="invisible fixed" ref={hiddenSpanRef} />
             <input
