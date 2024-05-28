@@ -612,10 +612,6 @@ video {
   z-index: -10;
 }
 
-.-mt-1 {
-  margin-top: -0.25rem;
-}
-
 .flex {
   display: flex;
 }
@@ -636,14 +632,6 @@ video {
   height: 100%;
 }
 
-.h-96 {
-  height: 24rem;
-}
-
-.h-dvh {
-  height: 100dvh;
-}
-
 .h-screen {
   height: 100vh;
 }
@@ -662,10 +650,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-96 {
-  width: 24rem;
 }
 
 .flex-grow {

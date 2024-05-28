@@ -118,8 +118,6 @@ export const Terminal = ({
     if (inputRef.current) inputRef.current.scrollIntoView();
   };
 
-  console.log(output);
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -132,7 +130,6 @@ export const Terminal = ({
       const { selectionStart } = inputRef.current;
       const textBeforeCaret = currentLine.slice(0, selectionStart || 0);
       hiddenSpanRef.current.textContent = textBeforeCaret;
-      console.log(hiddenSpanRef.current.offsetWidth);
       caretRef.current.style.left = `${hiddenSpanRef.current.offsetWidth}px`; // Adjust to fit input width
     }
   }, [currentLine]);
@@ -191,6 +188,7 @@ export const Terminal = ({
               className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
               onKeyDown={handleCommand}
+              onChange={() => null}
             />
             <div className="flex">
               <span>{currentLine}</span>
