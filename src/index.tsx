@@ -74,9 +74,8 @@ const ignoredKeys = [
 const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
   if (index % 2 === 0 && typeof line === "string") {
     const parts = line.split(" ");
-    console.log(parts);
     const prompt = parts[0];
-    const command = parts[1];
+    const command = parts.slice(1).join(" ");
 
     const promptParts = prompt.split("@");
     const userName = promptParts[0];
