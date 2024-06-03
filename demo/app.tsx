@@ -48,6 +48,6 @@ const commands: Array<Command> = [
 
 const AppDesktop = () => (
   <div className="h-screen">
-    <Terminal commands={commands} machineName="machine-name" userName="user-name" />
+    <Terminal commands={commands} machineName="firefox" userName="linux" />
   </div>
 );

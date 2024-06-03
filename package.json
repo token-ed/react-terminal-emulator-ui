@@ -1,6 +1,6 @@
 {
   "name": "react-terminal-emulator-ui",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Terminal Emulator UI with React + Tailwind",
   "main": "src/index.tsx",
   "files": [
@@ -12,7 +12,8 @@
     "url": "https://github.com/token-ed/react-terminal-emulator-ui"
   },
   "scripts": {
-    "tw:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css",
+    "tw:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./src/output.css",
+    "tw:demo:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css",
     "tw:docs:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./docs/output.css",
     "tw:watch": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css --watch",
     "start": "concurrently \"npm run tw:watch\" \"webpack-dev-server --mode development\"",
