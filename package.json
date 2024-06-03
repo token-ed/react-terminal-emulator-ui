@@ -12,7 +12,6 @@
     "url": "https://github.com/token-ed/react-terminal-emulator-ui"
   },
   "scripts": {
-    "tw:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./src/output.css",
     "tw:demo:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css",
     "tw:docs:build": "tailwindcss build -i ./src/styles/tailwind.css -o ./docs/output.css",
     "tw:watch": "tailwindcss build -i ./src/styles/tailwind.css -o ./demo/output.css --watch",

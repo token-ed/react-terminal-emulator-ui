@@ -84,9 +84,7 @@ const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
     const machineNameOnly = machineName.slice(0, -3);
     return (
       <div className="flex" key={index}>
-        <span className="dark:text-green-500/80 text-green-800 font-bold line-clamp-1">
-          {userName}
-        </span>
+        <span className="dark:text-green-500/80 text-green-800 font-bold">{userName}</span>
         <span className="dark:text-gray-300 text-gray-700">@</span>
         <span className="dark:text-blue-500/80 text-blue-800 font-bold">{machineNameOnly}</span>:
         <span className="dark:text-yellow-500/80 text-orange-800 font-bold">~</span>
