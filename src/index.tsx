@@ -72,7 +72,6 @@ const ignoredKeys = [
 ];
 
 const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
-  console.log("line", line);
   if (index % 2 === 0 && typeof line === "string") {
     const parts = line.split(" ");
     const prompt = parts[0];
@@ -116,6 +115,7 @@ export const Terminal = ({
   const [focused, setFocused] = useState(true);
   const [currentLine, setCurrentLine] = useState<string>("");
 
+  const wrapperRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const caretRef = useRef<HTMLDivElement>(null);
   const hiddenSpanRef = useRef<HTMLSpanElement>(null);
@@ -144,9 +144,16 @@ export const Terminal = ({
     }
 
     setOutput(newOutput);
-
-    if (inputRef.current) inputRef.current.scrollIntoView();
   };
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      wrapperRef.current.scrollTo({
+        top: wrapperRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [output]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -191,7 +198,7 @@ export const Terminal = ({
           [{trimmedUserName}@{trimmedMachineName}]$
         </div>
       </div>
-      <div className="overflow-y-auto pt-4 px-2">
+      <div className="overflow-y-auto pt-4 px-2" ref={wrapperRef}>
         <InitialFeed text={initialFeed} />
         {output.map(getPrompt)}
         <div className="flex relative">
