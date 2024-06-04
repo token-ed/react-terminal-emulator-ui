@@ -129,8 +129,8 @@ export const Terminal = ({
   };
 
   const processCommand = (cmd: string) => {
-    const trimmedUserName = userName.replaceAll(" ", "");
-    const trimmedMachineName = machineName.replaceAll(" ", "");
+    const trimmedUserName = userName.replaceAll(" ", "").toLowerCase();
+    const trimmedMachineName = machineName.replaceAll(" ", "").toLowerCase();
     const newOutput = [...output, `${trimmedUserName}@${trimmedMachineName}:~$ ${cmd}`];
     const foundCommand = allCommands.find((command) => command.command === cmd);
 
