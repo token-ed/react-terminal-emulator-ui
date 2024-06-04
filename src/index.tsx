@@ -72,6 +72,7 @@ const ignoredKeys = [
 ];
 
 const getPrompt = (line: React.ReactNode, index: number): React.ReactNode => {
+  console.log("line", line);
   if (index % 2 === 0 && typeof line === "string") {
     const parts = line.split(" ");
     const prompt = parts[0];
@@ -128,7 +129,9 @@ export const Terminal = ({
   };
 
   const processCommand = (cmd: string) => {
-    const newOutput = [...output, `${userName}@${machineName}:~$ ${cmd}`];
+    const trimmedUserName = userName.replaceAll(" ", "");
+    const trimmedMachineName = machineName.replaceAll(" ", "");
+    const newOutput = [...output, `${trimmedUserName}@${trimmedMachineName}:~$ ${cmd}`];
     const foundCommand = allCommands.find((command) => command.command === cmd);
 
     if (!foundCommand) {

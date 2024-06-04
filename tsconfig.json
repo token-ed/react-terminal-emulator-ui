@@ -10,7 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationDir": "dist/types",
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": ["ES2021.String"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
