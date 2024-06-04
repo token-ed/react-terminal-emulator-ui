@@ -11,7 +11,7 @@
     "declaration": true,
     "declarationDir": "dist/types",
     "outDir": "dist",
-    "lib": ["ES2021.String"]
+    "lib": ["ES2021.String", "DOM"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

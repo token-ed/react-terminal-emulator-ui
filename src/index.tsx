@@ -106,6 +106,9 @@ export const Terminal = ({
   onCommandNotFound = (cmd: string) => `'${cmd}': command  not found.`,
   disableClearCommand,
 }: Props) => {
+  const trimmedUserName = userName.replaceAll(" ", "").toLowerCase();
+  const trimmedMachineName = machineName.replaceAll(" ", "").toLowerCase();
+
   const allCommands: Array<Command> = disableClearCommand
     ? commands
     : [...commands, { command: "clear" }];
@@ -129,8 +132,6 @@ export const Terminal = ({
   };
 
   const processCommand = (cmd: string) => {
-    const trimmedUserName = userName.replaceAll(" ", "").toLowerCase();
-    const trimmedMachineName = machineName.replaceAll(" ", "").toLowerCase();
     const newOutput = [...output, `${trimmedUserName}@${trimmedMachineName}:~$ ${cmd}`];
     const foundCommand = allCommands.find((command) => command.command === cmd);
 
@@ -187,7 +188,7 @@ export const Terminal = ({
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
         <div className="text-center w-full font-bold text-slate-400 dark:text-gray-300 -ml-9">
-          [{userName}@{machineName}]$
+          [{trimmedUserName}@{trimmedMachineName}]$
         </div>
       </div>
       <div className="overflow-y-auto pt-4 px-2">
@@ -195,9 +196,13 @@ export const Terminal = ({
         {output.map(getPrompt)}
         <div className="flex relative">
           <span>
-            <span className="dark:text-green-500/80 text-green-800 font-bold ">{userName}</span>
+            <span className="dark:text-green-500/80 text-green-800 font-bold ">
+              {trimmedUserName}
+            </span>
             <span className="dark:text-gray-300 text-gray-700 font-bold">@</span>
-            <span className="dark:text-blue-500/80 text-blue-800 font-bold">{machineName}</span>
+            <span className="dark:text-blue-500/80 text-blue-800 font-bold">
+              {trimmedMachineName}
+            </span>
           </span>
           :<span className="dark:text-yellow-500/80 text-orange-800 font-bold">~</span>
           <span className="dark:text-red-500/80 text-red-800 font-bold">$</span>&nbsp;
