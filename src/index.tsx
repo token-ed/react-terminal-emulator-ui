@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { InitialFeed } from "./components/initial-feed";
+import { TypeAnimation } from "react-type-animation";
 
 export interface Command {
   command: string;
@@ -101,7 +101,7 @@ export const Terminal = ({
   commands,
   machineName,
   userName,
-  initialFeed,
+  initialFeed = "Welcome to your terminal. Type `help` to see available commands.",
   onCommandNotFound = (cmd: string) => `'${cmd}': command  not found.`,
   disableClearCommand,
 }: Props) => {
@@ -199,7 +199,7 @@ export const Terminal = ({
         </div>
       </div>
       <div className="overflow-y-auto pt-4 px-2" ref={wrapperRef}>
-        <InitialFeed text={initialFeed} />
+        <TypeAnimation speed={90} cursor={false} sequence={[initialFeed]} />
         {output.map(getPrompt)}
         <div className="flex relative">
           <span>
