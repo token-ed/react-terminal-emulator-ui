@@ -75,6 +75,21 @@ const MyTerminal = () => {
 export default MyTerminal;
 ```
 
+### Important Note on Next.js Integration
+
+There is a change you are using Next.js framework to build your project. If that is the case please add this configuration line to your `next.config.mjs` file:
+
+```ts
+/** @type {import('next').NextConfig} */
+const nextConfig = { transpilePackages: ["react-ribbon-ui"] }; // add this line
+
+export default nextConfig;
+```
+
+This will ensure Next.js transpiles and bundles dependencies from this package into your project out of the box.
+
+For more information refer to: https://nextjs.org/docs/app/api-reference/next-config-js/transpilePackages
+
 ### `Important Note on TailwindCSS Integration`
 
 As of the date of publishing this package, TailwindCSS does not support native package resolution for styles. This means that any custom styling provided by this package using TailwindCSS will not automatically be included in your project. To ensure that the TailwindCSS styles from this package are applied correctly, you need to update your TailwindCSS configuration in your project.
