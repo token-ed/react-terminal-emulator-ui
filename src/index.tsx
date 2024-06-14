@@ -123,13 +123,11 @@ export const Terminal = ({
   const setCaretPosition = () => {
     const caretPosition = inputRef.current?.selectionStart || 0;
     setTimeout(() => {
-      console.log("Setting selection range", caretPosition);
       inputRef.current?.setSelectionRange(caretPosition, caretPosition);
     }, 0);
   };
 
   const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    setCaretPosition();
     if (event.key == "Backspace")
       return setCurrentLine(currentLine.substring(0, currentLine?.length));
     if (event.key === "Enter") {
@@ -139,6 +137,7 @@ export const Terminal = ({
   };
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     if (!ignoredKeys.includes(event.currentTarget.value)) {
       setCaretPosition();
       setCurrentLine(event.currentTarget.value);
@@ -233,10 +232,8 @@ export const Terminal = ({
               ref={inputRef}
               className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
-              defaultValue={currentLine}
               onKeyDown={handleCommand}
               onInput={handleInput}
-              onKeyUp={(e) => e.preventDefault()}
               autoComplete="off"
               autoCapitalize="none"
               autoCorrect="off"
