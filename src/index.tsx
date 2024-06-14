@@ -121,11 +121,11 @@ export const Terminal = ({
   const hiddenSpanRef = useRef<HTMLSpanElement>(null);
 
   const setCaretPosition = () => {
-    const caretPosition = inputRef.current?.selectionEnd;
-    inputRef.current?.setSelectionRange(
-      inputRef.current?.selectionEnd,
-      inputRef.current?.selectionEnd
-    );
+    const caretPosition = inputRef.current?.selectionStart || 0;
+    setTimeout(() => {
+      console.log("Setting selection range", caretPosition);
+      inputRef.current?.setSelectionRange(caretPosition, caretPosition);
+    }, 0);
   };
 
   const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -240,6 +240,8 @@ export const Terminal = ({
               autoComplete="off"
               autoCapitalize="none"
               autoCorrect="off"
+              dir="ltr"
+              type="text"
             />
             <div className="flex">
               <span>{currentLine}</span>
