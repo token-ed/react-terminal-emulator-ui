@@ -223,7 +223,10 @@ export const Terminal = ({
               className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
               onKeyDown={handleCommand}
-              onInput={handleInput}
+              onChange={handleInput}
+              autoComplete="off"
+              autoCapitalize="none"
+              autoCorrect="off"
             />
             <div className="flex">
               <span>{currentLine}</span>

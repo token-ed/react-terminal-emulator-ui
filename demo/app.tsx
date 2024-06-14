@@ -52,7 +52,7 @@ const AppDesktop = () => (
       commands={commands}
       machineName="firefox"
       userName="linux"
-      initialFeed="Hello! My name is Eduardo. Welcome to my personal page. Type `help` to list all available commands."
+      initialFeed="Hello! Welcome to react-terminal-emulator-ui. Type `help` to list all available commands."
     />
   </div>
 );
