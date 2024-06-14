@@ -236,6 +236,7 @@ export const Terminal = ({
               defaultValue={currentLine}
               onKeyDown={handleCommand}
               onInput={handleInput}
+              onKeyUp={(e) => e.preventDefault()}
               autoComplete="off"
               autoCapitalize="none"
               autoCorrect="off"
