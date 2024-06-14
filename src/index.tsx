@@ -120,7 +120,16 @@ export const Terminal = ({
   const caretRef = useRef<HTMLDivElement>(null);
   const hiddenSpanRef = useRef<HTMLSpanElement>(null);
 
+  const setCaretPosition = () => {
+    const caretPosition = inputRef.current?.selectionEnd;
+    inputRef.current?.setSelectionRange(
+      inputRef.current?.selectionEnd,
+      inputRef.current?.selectionEnd
+    );
+  };
+
   const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    setCaretPosition();
     if (event.key == "Backspace")
       return setCurrentLine(currentLine.substring(0, currentLine?.length));
     if (event.key === "Enter") {
@@ -130,8 +139,10 @@ export const Terminal = ({
   };
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.currentTarget);
-    if (!ignoredKeys.includes(event.currentTarget.value)) setCurrentLine(event.currentTarget.value);
+    if (!ignoredKeys.includes(event.currentTarget.value)) {
+      setCaretPosition();
+      setCurrentLine(event.currentTarget.value);
+    }
   };
 
   const processCommand = (cmd: string) => {
@@ -222,6 +233,7 @@ export const Terminal = ({
               ref={inputRef}
               className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
+              defaultValue={currentLine}
               onKeyDown={handleCommand}
               onChange={handleInput}
               autoComplete="off"
