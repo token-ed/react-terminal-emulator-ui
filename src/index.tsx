@@ -120,15 +120,18 @@ export const Terminal = ({
   const caretRef = useRef<HTMLDivElement>(null);
   const hiddenSpanRef = useRef<HTMLSpanElement>(null);
 
-  const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key == "Backspace")
-      return setCurrentLine(currentLine.substring(0, currentLine?.length - 1));
-    if (e.key === "Enter") {
+  const handleCommand = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key == "Backspace")
+      return setCurrentLine(currentLine.substring(0, currentLine?.length));
+    if (event.key === "Enter") {
       processCommand(currentLine);
       return setCurrentLine("");
     }
+  };
 
-    if (!ignoredKeys.includes(e.key)) setCurrentLine(currentLine + e.key);
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.currentTarget);
+    if (!ignoredKeys.includes(event.currentTarget.value)) setCurrentLine(event.currentTarget.value);
   };
 
   const processCommand = (cmd: string) => {
@@ -220,7 +223,7 @@ export const Terminal = ({
               className="fixed -z-10 w-0 h-0 opacity-0"
               value={currentLine}
               onKeyDown={handleCommand}
-              onChange={() => null}
+              onInput={handleInput}
             />
             <div className="flex">
               <span>{currentLine}</span>
