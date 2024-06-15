@@ -121,7 +121,7 @@ export const Terminal = ({
   const hiddenSpanRef = useRef<HTMLSpanElement>(null);
 
   const setCaretPosition = () => {
-    const caretPosition = inputRef.current?.selectionStart || 0;
+    const caretPosition = inputRef.current?.value.length || 0;
     setTimeout(() => {
       if (inputRef && inputRef.current) {
         inputRef.current.selectionStart = caretPosition;
@@ -180,8 +180,8 @@ export const Terminal = ({
   // Update the caret position
   useEffect(() => {
     if (inputRef.current && caretRef.current && hiddenSpanRef.current) {
-      const { selectionStart } = inputRef.current;
-      const textBeforeCaret = currentLine.slice(0, selectionStart || 0);
+      const valueLength = inputRef.current?.value.length;
+      const textBeforeCaret = currentLine.slice(0, valueLength || 0);
       hiddenSpanRef.current.textContent = textBeforeCaret;
       caretRef.current.style.left = `${hiddenSpanRef.current.offsetWidth}px`; // Adjust to fit input width
     }
