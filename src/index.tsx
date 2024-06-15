@@ -123,7 +123,10 @@ export const Terminal = ({
   const setCaretPosition = () => {
     const caretPosition = inputRef.current?.selectionStart || 0;
     setTimeout(() => {
-      inputRef.current?.setSelectionRange(caretPosition, caretPosition);
+      if (inputRef && inputRef.current) {
+        inputRef.current.selectionStart = caretPosition;
+        inputRef.current.selectionEnd = caretPosition;
+      }
     }, 0);
   };
 
