@@ -81,7 +81,7 @@ There is a change you are using Next.js framework to build your project. If that
 
 ```ts
 /** @type {import('next').NextConfig} */
-const nextConfig = { transpilePackages: ["react-ribbon-ui"] }; // add this line
+const nextConfig = { transpilePackages: ["react-terminal-emulator-ui"] }; // add this line
 
 export default nextConfig;
 ```
